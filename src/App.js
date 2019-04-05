@@ -10,7 +10,9 @@ class App extends Component {
         <Header />
         <Layout>
           <GridMain>
-            <p>main</p>
+            <p>main1</p>
+            <p>main2</p>
+            <p>main3</p>
           </GridMain>
           <GridSide>
             <p>side</p>

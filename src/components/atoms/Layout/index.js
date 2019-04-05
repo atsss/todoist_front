@@ -3,19 +3,20 @@ import styles from './styles.module.sass'
 
 const LayoutPresenter = ({ tag: Tag = 'div', parts, className, ...props }) => {
   const { main, side } = parts
-  console.log('main:', main);
-  console.log('side:', side);
   return (
     <Tag className={[ styles.root, className ].join(' ')}>
-      { side }
-      { main }
+      <nav className={ styles.nav }>
+        { side }
+      </nav>
+      <main className={ styles.main }>
+        { main }
+      </main>
     </Tag>
   )
 }
 
 const LayoutContainer = ({ presenter, children, ...props }) => {
   const parts = mapParts(children)
-  console.log('parts container:', parts);
   return presenter({ parts, ...props })
 }
 
