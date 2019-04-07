@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import './App.sass';
 import Header from './components/organisms/Header'
 import Layout, { GridMain, GridSide } from './components/atoms/Layout'
+import Txt, { SubTxt, WhiteTxt, WarningTxt } from './components/atoms/Txt'
 
 class App extends Component {
   render() {
@@ -10,12 +11,12 @@ class App extends Component {
         <Header />
         <Layout>
           <GridMain>
-            <p>main1</p>
-            <p>main2</p>
-            <p>main3</p>
+            <Txt>default</Txt>
+            <SubTxt size='s'>sub</SubTxt>
+            <WarningTxt weight='bold'>sub</WarningTxt>
           </GridMain>
           <GridSide>
-            <p>side</p>
+            <WhiteTxt>white</WhiteTxt>
           </GridSide>
         </Layout>
       </Fragment>
