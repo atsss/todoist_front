@@ -3,6 +3,7 @@ import './App.sass';
 import Header from './components/organisms/Header'
 import Layout, { GridMain, GridSide } from './components/atoms/Layout'
 import Txt, { SubTxt, WhiteTxt, WarningTxt } from './components/atoms/Txt'
+import Heading from './components/atoms/Heading'
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
         <Header />
         <Layout>
           <GridMain>
+            <Heading>heading</Heading>
             <Txt>default</Txt>
             <SubTxt size='s'>sub</SubTxt>
             <WarningTxt weight='bold'>sub</WarningTxt>
