@@ -15,7 +15,7 @@ class App extends Component {
             <Heading>heading</Heading>
             <Txt>default</Txt>
             <SubTxt size='s'>sub</SubTxt>
-            <WarningTxt weight='bold'>sub</WarningTxt>
+            <WarningTxt weight='bold' className='u-mt30'>sub</WarningTxt>
           </GridMain>
           <GridSide>
             <WhiteTxt>white</WhiteTxt>

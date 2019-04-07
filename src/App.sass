@@ -2,3 +2,15 @@
 
 body
   background-color: #fafafa
+
+@for $i from -20 through 20
+  .u-m#{$i * 5}
+    margin: 5px * $i !important
+  .u-mt#{$i * 5}
+    margin-top: 5px * $i !important
+  .u-mr#{$i * 5}
+    margin-right: 5px * $i !important
+  .u-mb#{$i * 5}
+    margin-bottom: 5px * $i !important
+  .u-ml#{$i * 5}
+    margin-left: 5px * $i !important
