@@ -11,6 +11,6 @@ const Header = props => (
       <span> ログイン </span>
     </div>
   </header>
-);
+)
 
 export default Header

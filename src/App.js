@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from 'react';
-import './App.sass';
-import Header from './components/organisms/Header'
+import React, { Component, Fragment } from 'react'
+import './App.sass'
 import Layout, { GridMain, GridSide } from './components/atoms/Layout'
-import Txt, { SubTxt, WhiteTxt, WarningTxt } from './components/atoms/Txt'
-import Heading from './components/atoms/Heading'
+import Txt from './components/atoms/Txt'
+import Header from './components/organisms/Header'
+import TaskLists from './components/organisms/TaskLists'
 
 class App extends Component {
   render() {
@@ -12,10 +12,7 @@ class App extends Component {
         <Header />
         <Layout>
           <GridMain>
-            <Heading>heading</Heading>
-            <Txt>default</Txt>
-            <SubTxt size='s'>sub</SubTxt>
-            <WarningTxt weight='bold' className='u-mt30'>sub</WarningTxt>
+            <TaskLists />
           </GridMain>
           <GridSide>
             <Txt weight='bold'>今日</Txt>
