@@ -18,7 +18,7 @@ class App extends Component {
             <WarningTxt weight='bold' className='u-mt30'>sub</WarningTxt>
           </GridMain>
           <GridSide>
-            <WhiteTxt>white</WhiteTxt>
+            <Txt weight='bold'>今日</Txt>
           </GridSide>
         </Layout>
       </Fragment>
