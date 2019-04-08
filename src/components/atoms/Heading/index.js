@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './styles.module.sass'
+import { containerPresenter } from '../../utils/HoC.js'
 
 export const HeadingPresenter = ({
   tag: Tag,
@@ -23,8 +24,6 @@ export const HeadingContainer = ({
   return presenter({ tag, visualLevel, ...props})
 }
 
-const Heading = props => (
-  <HeadingContainer presenter={ presenterProps => <HeadingPresenter { ...presenterProps } /> } { ...props } />
-)
+const Heading = containerPresenter(HeadingContainer, HeadingPresenter)
 
 export default Heading
