@@ -1,12 +1,20 @@
 import React from 'react'
 import styles from './styles.module.sass'
-import Txt from '../../atoms/Txt'
 import PageTitle from '../../molecules/PageTitle'
+import TaskList from '../../molecules/TaskList'
 
-const TaskLists = props => (
+const TaskLists = ({ tasks, ...props }) => (
   <div>
     <PageTitle title='今日' sub='水 4月10日' />
-    <Txt>default</Txt>
+    <ul>
+      {tasks.map(task => (
+        <TaskList
+          key={task.id}
+          time={task.time}
+          name={task.name}
+        />
+      ))}
+    </ul>
   </div>
 )
 
