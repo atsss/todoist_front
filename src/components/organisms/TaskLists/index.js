@@ -1,13 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styles from './styles.module.sass'
-import Heading from '../../atoms/Heading'
-import Txt, { SubTxt } from '../../atoms/Txt'
+import Txt from '../../atoms/Txt'
+import PageTitle from '../../molecules/PageTitle'
 
 const TaskLists = props => (
   <div>
-    <Heading>今日</Heading>
+    <PageTitle title='今日' sub='水 4月10日' />
     <Txt>default</Txt>
-    <SubTxt size='s'>sub</SubTxt>
   </div>
 )
 
