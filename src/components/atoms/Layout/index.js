@@ -26,8 +26,9 @@ function mapParts(elems) {
   const parts = []
   elems.map(elem => {
     const idx = partTypes.indexOf(elem.type.name) // displayName => name
-    if (!~idx) return
+    if (!~idx) return false
     parts[idx] = elem.props.children
+    return true
   })
   const [ main, side ] = parts
   return { main, side }
