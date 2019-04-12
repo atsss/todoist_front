@@ -1,9 +1,17 @@
 import React, { Component, Fragment } from 'react'
 import './App.sass'
+
+// fontawesome
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
+
+// components
 import Layout, { GridMain, GridSide } from './components/atoms/Layout'
 import Txt from './components/atoms/Txt'
 import Header from './components/organisms/Header'
 import TaskLists from './components/organisms/TaskLists'
+
+library.add(faStroopwafel)
 
 class App extends Component {
   state = {
