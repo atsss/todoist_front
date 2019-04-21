@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { Switch, Route} from 'react-router-dom'
 import './App.sass'
 
 // fontawesome
@@ -9,25 +10,22 @@ import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
 import Layout, { GridMain, GridSide } from './components/atoms/Layout'
 import Txt from './components/atoms/Txt'
 import Header from './components/organisms/Header'
-import TaskLists from './components/organisms/TaskLists'
+import TaskIndexPage from './components/pages/TaskIndexPage'
 
 library.add(faStroopwafel)
 
 class App extends Component {
-  state = {
-    tasks: [
-      { id: 1, time: '10:30', name: 'ランニング' },
-      { id: 2, time: '12:00', name: 'ランチ' }
-    ]
-  }
-
   render() {
     return (
       <Fragment>
         <Header />
         <Layout>
           <GridMain>
-            <TaskLists tasks={this.state.tasks}/>
+            <Switch>
+              <Route exact path='/' component={TaskIndexPage} />
+              <Route exact path='/tasks/new' component={TaskIndexPage} />
+              <Route exact path='/tasks/:id/edit' component={TaskIndexPage} />
+            </Switch>
           </GridMain>
           <GridSide>
             <Txt weight='bold'>今日</Txt>
