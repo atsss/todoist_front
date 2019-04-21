@@ -10,6 +10,7 @@ const TaskLists = ({ tasks, ...props }) => (
       {tasks.map(task => (
         <TaskList
           key={task.id}
+          id={task.id}
           time={task.time}
           name={task.name}
         />
