@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import { Switch, Route} from 'react-router-dom'
 import './App.sass'
 
@@ -14,26 +14,22 @@ import TaskIndexPage from './components/pages/TaskIndexPage'
 
 library.add(faStroopwafel)
 
-class App extends Component {
-  render() {
-    return (
-      <Fragment>
-        <Header />
-        <Layout>
-          <GridMain>
-            <Switch>
-              <Route exact path='/' component={TaskIndexPage} />
-              <Route exact path='/tasks/new' component={TaskIndexPage} />
-              <Route exact path='/tasks/:id/edit' component={TaskIndexPage} />
-            </Switch>
-          </GridMain>
-          <GridSide>
-            <Txt weight='bold'>今日</Txt>
-          </GridSide>
-        </Layout>
-      </Fragment>
-    );
-  }
-}
+const App = () => (
+  <Fragment>
+    <Header />
+    <Layout>
+      <GridMain>
+        <Switch>
+          <Route exact path='/' component={TaskIndexPage} />
+          <Route exact path='/tasks/new' component={TaskIndexPage} />
+          <Route exact path='/tasks/:id/edit' component={TaskIndexPage} />
+        </Switch>
+      </GridMain>
+      <GridSide>
+        <Txt weight='bold'>今日</Txt>
+      </GridSide>
+    </Layout>
+  </Fragment>
+)
 
-export default App;
+export default App
