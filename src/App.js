@@ -8,8 +8,8 @@ import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
 
 // components
 import Layout, { GridMain, GridSide } from './components/atoms/Layout'
-import Txt from './components/atoms/Txt'
 import Header from './components/organisms/Header'
+import Menu from './components/organisms/Menu'
 import TaskIndexPage from './components/pages/TaskIndexPage'
 
 library.add(faStroopwafel)
@@ -26,7 +26,7 @@ const App = () => (
         </Switch>
       </GridMain>
       <GridSide>
-        <Txt weight='bold'>今日</Txt>
+        <Menu />
       </GridSide>
     </Layout>
   </Fragment>
