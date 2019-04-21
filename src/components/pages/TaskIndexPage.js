@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import TaskIndexTemplate from '../templates/TaskListsTemplate'
+import TaskIndexTemplate from '../templates/TaskIndexTemplate'
 
 export default class TaskIndexPage extends Component {
   state = {
