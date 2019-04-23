@@ -11,6 +11,8 @@ import Layout, { GridMain, GridSide } from './components/atoms/Layout'
 import Header from './components/organisms/Header'
 import Menu from './components/organisms/Menu'
 import TaskIndexPage from './components/pages/TaskIndexPage'
+import TaskNewPage from './components/pages/TaskNewPage'
+import TaskEditPage from './components/pages/TaskEditPage'
 
 library.add(faStroopwafel)
 
@@ -21,8 +23,8 @@ const App = () => (
       <GridMain>
         <Switch>
           <Route exact path='/' component={TaskIndexPage} />
-          <Route exact path='/tasks/new' component={TaskIndexPage} />
-          <Route exact path='/tasks/:id/edit' component={TaskIndexPage} />
+          <Route exact path='/tasks/new' component={TaskNewPage} />
+          <Route exact path='/tasks/:id/edit' component={TaskEditPage} />
         </Switch>
       </GridMain>
       <GridSide>
