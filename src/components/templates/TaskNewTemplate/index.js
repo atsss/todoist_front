@@ -22,7 +22,7 @@ const TaskNewTemplate = ({ className }) => (
       placeholder='時間'
     />
     <Button
-      text='タスクを追加'
+      text='追加'
       onClick={(b) => console.log(b)}
     />
   </div>
