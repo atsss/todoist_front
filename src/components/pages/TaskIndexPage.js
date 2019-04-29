@@ -1,18 +1,33 @@
 import React, { Component } from 'react'
 import TaskIndexTemplate from '../templates/TaskIndexTemplate'
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
+
+const TASKS_QUERY = gql`
+  {
+    tasks {
+      id
+      name
+      dueDate
+    }
+  }
+`
 
 export default class TaskIndexPage extends Component {
-  state = {
-    tasks: [
-      { id: 1, time: '10:30', name: 'ランニング' },
-      { id: 2, time: '12:00', name: 'ランチ' }
-    ]
-  }
-
   render() {
-    const { tasks } = this.state
     return (
-      <TaskIndexTemplate tasks={tasks} />
+      <Query query={TASKS_QUERY}>
+        {({ loading, error, data }) => {
+          if (loading) return <div>Fetching</div>
+          if (error) return <div>Error</div>
+
+          const { tasks } = data
+
+          return (
+            <TaskIndexTemplate tasks={tasks} />
+          )
+        }}
+      </Query>
     )
   }
 }

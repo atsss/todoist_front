@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
+import { SERVER_ENDPOINT } from './constants'
 import { BrowserRouter } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker'
 import { ApolloProvider } from 'react-apollo'
@@ -10,7 +11,7 @@ import { createHttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000'
+  uri: SERVER_ENDPOINT
 })
 
 const client = new ApolloClient({
