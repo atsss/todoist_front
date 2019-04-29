@@ -24,7 +24,7 @@ const TaskEditTemplate = ({ task, className }) => (
     <input
       className={styles.input}
       type='text'
-      defaultValue={task.time}
+      defaultValue={task.dueDate}
       placeholder='時間'
     />
     <Button
