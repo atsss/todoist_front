@@ -1,17 +1,7 @@
 import React, { Component } from 'react'
 import TaskIndexTemplate from '../templates/TaskIndexTemplate'
 import { Query } from 'react-apollo'
-import gql from 'graphql-tag'
-
-const TASKS_QUERY = gql`
-  {
-    tasks {
-      id
-      name
-      dueDate
-    }
-  }
-`
+import { TASKS_QUERY } from '../../queries'
 
 export default class TaskIndexPage extends Component {
   render() {

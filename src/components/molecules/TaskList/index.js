@@ -5,27 +5,7 @@ import Link from '../../atoms/Link'
 import Txt from '../../atoms/Txt'
 import Settings from '../../molecules/Settings'
 import { Mutation } from 'react-apollo'
-import gql from 'graphql-tag'
-
-const DONE_TASK_MUTATION = gql`
-  mutation DoneTaskMutation($id: ID!) {
-    doneTask(id: $id) {
-      id
-      name
-      dueDate
-    }
-  }
-`
-
-const TASKS_QUERY = gql`
-  {
-    tasks {
-      id
-      name
-      dueDate
-    }
-  }
-`
+import { TASKS_QUERY, DONE_TASK_MUTATION } from '../../../queries'
 
 const TaskList = ({ id, time, name, className }) => (
   <li className={ [ styles.root, className ].join(' ') }>
