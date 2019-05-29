@@ -17,11 +17,33 @@ const DONE_TASK_MUTATION = gql`
   }
 `
 
+const TASKS_QUERY = gql`
+  {
+    tasks {
+      id
+      name
+      dueDate
+    }
+  }
+`
+
 const TaskList = ({ id, time, name, className }) => (
   <li className={ [ styles.root, className ].join(' ') }>
     <Mutation
       mutation={DONE_TASK_MUTATION}
       variables={{ id }}
+      update={(store, { data: { doneTask } }) => {
+        const data = store.readQuery({ query: TASKS_QUERY })
+        const tasks = data.tasks
+
+        for( var i = 0; i < tasks.length; i++){
+           if ( tasks[i].id === doneTask.id) {
+             tasks.splice(i, 1);
+           }
+        }
+
+        store.writeQuery({ query: TASKS_QUERY, data })
+      }}
     >
       {doneTaskMutation => <div onClick={doneTaskMutation}> <Check /> </div> }
     </Mutation>
