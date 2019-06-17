@@ -8,3 +8,12 @@ function useSettings(initialState = false) {
 }
 
 export const SettingsContainer = createContainer(useSettings)
+
+function useSession(initialState = false) {
+  let [isLogin, setSession] = useState(initialState)
+  let login = () => setSession(true)
+  let logout = () => setSession(false)
+  return { isLogin, login, logout }
+}
+
+export const SessionContainer = createContainer(useSession)
