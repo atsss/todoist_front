@@ -19,3 +19,11 @@ export const TASKS_QUERY = gql`
     }
   }
 `
+
+export const LOGIN_MUTATION = gql`
+  mutation LoginMutation($email: String!, $password: String!) {
+    signinUser(email: { email: $email, password: $password }) {
+      token
+    }
+  }
+`
