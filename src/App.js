@@ -19,7 +19,7 @@ import { SessionContainer } from "./containers";
 library.add(faStroopwafel);
 
 const App = () => {
-  let session = SessionContainer.useContainer();
+  const session = SessionContainer.useContainer();
   return session.isLogin ? (
     <Fragment>
       <Header />
