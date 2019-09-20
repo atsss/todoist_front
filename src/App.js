@@ -1,46 +1,44 @@
-import React, { Fragment } from 'react'
-import { Switch, Route} from 'react-router-dom'
-import './App.sass'
+import React, { Fragment } from "react";
+import { Switch, Route } from "react-router-dom";
+import "./App.sass";
 
 // fontawesome
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faStroopwafel } from "@fortawesome/free-solid-svg-icons";
 
 // components
-import Layout, { GridMain, GridSide } from './components/atoms/Layout'
-import Header from './components/organisms/Header'
-import Menu from './components/organisms/Menu'
-import LoginPage from './components/pages/LoginPage'
-import TaskIndexPage from './components/pages/TaskIndexPage'
-import TaskNewPage from './components/pages/TaskNewPage'
-import TaskEditPage from './components/pages/TaskEditPage'
-import { SessionContainer } from './containers'
+import Layout, { GridMain, GridSide } from "./components/atoms/Layout";
+import Header from "./components/organisms/Header";
+import Menu from "./components/organisms/Menu";
+import LoginPage from "./components/pages/LoginPage";
+import TaskIndexPage from "./components/pages/TaskIndexPage";
+import TaskNewPage from "./components/pages/TaskNewPage";
+import TaskEditPage from "./components/pages/TaskEditPage";
+import { SessionContainer } from "./containers";
 
-library.add(faStroopwafel)
+library.add(faStroopwafel);
 
 const App = () => {
-  let session = SessionContainer.useContainer()
-  return(
-    session.isLogin ? (
-      <Fragment>
-        <Header />
-        <Layout>
-          <GridMain>
-            <Switch>
-              <Route exact path='/' component={TaskIndexPage} />
-              <Route exact path='/tasks/new' component={TaskNewPage} />
-              <Route exact path='/tasks/:id/edit' component={TaskEditPage} />
-            </Switch>
-          </GridMain>
-          <GridSide>
-            <Menu />
-          </GridSide>
-        </Layout>
-      </Fragment>
-    ) : (
-      <LoginPage />
-    )
-  )
-}
+  let session = SessionContainer.useContainer();
+  return session.isLogin ? (
+    <Fragment>
+      <Header />
+      <Layout>
+        <GridMain>
+          <Switch>
+            <Route exact path="/" component={TaskIndexPage} />
+            <Route exact path="/tasks/new" component={TaskNewPage} />
+            <Route exact path="/tasks/:id/edit" component={TaskEditPage} />
+          </Switch>
+        </GridMain>
+        <GridSide>
+          <Menu />
+        </GridSide>
+      </Layout>
+    </Fragment>
+  ) : (
+    <LoginPage />
+  );
+};
 
-export default App
+export default App;

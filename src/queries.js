@@ -1,4 +1,4 @@
-import gql from 'graphql-tag'
+import gql from "graphql-tag";
 
 export const DONE_TASK_MUTATION = gql`
   mutation DoneTaskMutation($id: ID!) {
@@ -8,7 +8,7 @@ export const DONE_TASK_MUTATION = gql`
       dueDate
     }
   }
-`
+`;
 
 export const TASKS_QUERY = gql`
   {
@@ -18,7 +18,7 @@ export const TASKS_QUERY = gql`
       dueDate
     }
   }
-`
+`;
 
 export const LOGIN_MUTATION = gql`
   mutation LoginMutation($email: String!, $password: String!) {
@@ -26,4 +26,4 @@ export const LOGIN_MUTATION = gql`
       token
     }
   }
-`
+`;

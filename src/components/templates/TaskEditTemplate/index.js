@@ -1,37 +1,27 @@
-import React from 'react'
-import styles from '../../atoms/Input/styles.module.sass'
-import Button from '../../atoms/Button'
-import PageTitle from '../../molecules/PageTitle'
+import React from "react";
+import styles from "../../atoms/Input/styles.module.sass";
+import Button from "../../atoms/Button";
+import PageTitle from "../../molecules/PageTitle";
 
 const TaskEditTemplate = ({ task, className }) => (
   <div className={className}>
-    <PageTitle title='編集' />
-    <input
-      value={task.id}
-      type='hidden'
-    />
+    <PageTitle title="編集" />
+    <input value={task.id} type="hidden" />
     <input
       className={styles.input}
-      type='text'
+      type="text"
       defaultValue={task.name}
-      placeholder='新しいタスク'
+      placeholder="新しいタスク"
     />
+    <input className={styles.input} type="text" placeholder="日付" />
     <input
       className={styles.input}
-      type='text'
-      placeholder='日付'
-    />
-    <input
-      className={styles.input}
-      type='text'
+      type="text"
       defaultValue={task.dueDate}
-      placeholder='時間'
+      placeholder="時間"
     />
-    <Button
-      text='変更'
-      onClick={(b) => console.log(b)}
-    />
+    <Button text="変更" onClick={b => console.log(b)} />
   </div>
-)
+);
 
-export default TaskEditTemplate
+export default TaskEditTemplate;
