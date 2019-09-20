@@ -5,6 +5,7 @@ import Txt from "../../atoms/Txt";
 import Settings from "../../molecules/Settings";
 import { Mutation } from "react-apollo";
 import { TASKS_QUERY, DONE_TASK_MUTATION } from "../../../queries";
+import { timeFormat } from "../../utils/TimeFormat";
 
 const TaskList = ({ id, time, name, className }) => (
   <li className={[styles.root, className].join(" ")}>
@@ -32,7 +33,7 @@ const TaskList = ({ id, time, name, className }) => (
       )}
     </Mutation>
     <Txt weight="bold" className="u-ml15">
-      {time}
+      {timeFormat(time)}
     </Txt>
     <Txt className="u-ml5">{name}</Txt>
     <Settings id={id} className={styles.settings} />
