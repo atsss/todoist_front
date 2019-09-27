@@ -1,21 +1,17 @@
 import React from "react";
 import TaskIndexTemplate from "../templates/TaskIndexTemplate";
-import { Query } from "react-apollo";
+import { useQuery } from "@apollo/react-hooks";
 import { TASKS_QUERY } from "../../queries";
 
 const TaskIndexPage = () => {
-  return (
-    <Query query={TASKS_QUERY}>
-      {({ loading, error, data }) => {
-        if (loading) return <div>Fetching</div>;
-        if (error) return <div>Error</div>;
+  const { loading, error, data } = useQuery(TASKS_QUERY);
 
-        const { tasks } = data;
+  if (loading) return <p>Loading ...</p>;
+  if (error) return <div>Error</div>;
 
-        return <TaskIndexTemplate tasks={tasks} />;
-      }}
-    </Query>
-  );
+  const { tasks } = data;
+
+  return <TaskIndexTemplate tasks={tasks} />;
 };
 
 export default TaskIndexPage;
