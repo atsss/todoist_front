@@ -1,21 +1,19 @@
 import React from "react";
 import TaskEditTemplate from "../templates/TaskEditTemplate";
-import { Query } from "react-apollo";
+import { useQuery } from "@apollo/react-hooks";
 import { GET_TASK } from "../../graphqls/queries";
 
 const TaskEditPage = ({ match }) => {
-  return (
-    <Query query={GET_TASK} variables={{ id: match.params.id }}>
-      {({ loading, error, data }) => {
-        if (loading) return <div>Fetching</div>;
-        if (error) return <div>Error</div>;
+  const { loading, error, data } = useQuery(GET_TASK, {
+    variables: { id: match.params.id }
+  });
 
-        const { task } = data;
+  if (loading) return <p>Loading ...</p>;
+  if (error) return <div>Error</div>;
 
-        return <TaskEditTemplate task={task} />;
-      }}
-    </Query>
-  );
+  const { task } = data;
+
+  return <TaskEditTemplate task={task} />;
 };
 
 export default TaskEditPage;
