@@ -1,10 +1,10 @@
 import React from "react";
 import TaskIndexTemplate from "../templates/TaskIndexTemplate";
 import { useQuery } from "@apollo/react-hooks";
-import { TASKS_QUERY } from "../../queries";
+import { GET_TASKS } from "../../graphqls/queries";
 
 const TaskIndexPage = () => {
-  const { loading, error, data } = useQuery(TASKS_QUERY);
+  const { loading, error, data } = useQuery(GET_TASKS);
 
   if (loading) return <p>Loading ...</p>;
   if (error) return <div>Error</div>;

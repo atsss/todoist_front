@@ -4,7 +4,8 @@ import Check from "../../atoms/Check";
 import Txt from "../../atoms/Txt";
 import Settings from "../../molecules/Settings";
 import { Mutation } from "react-apollo";
-import { TASKS_QUERY, DONE_TASK_MUTATION } from "../../../queries";
+import { GET_TASKS } from "../../../graphqls/queries";
+import { DONE_TASK_MUTATION } from "../../../graphqls/mutations";
 import { timeFormat } from "../../utils/TimeFormat";
 
 const TaskList = ({ id, time, name, className }) => (
@@ -13,7 +14,7 @@ const TaskList = ({ id, time, name, className }) => (
       mutation={DONE_TASK_MUTATION}
       variables={{ id }}
       update={(store, { data: { doneTask } }) => {
-        const data = store.readQuery({ query: TASKS_QUERY });
+        const data = store.readQuery({ query: GET_TASKS });
         const tasks = data.tasks;
 
         for (var i = 0; i < tasks.length; i++) {
@@ -22,7 +23,7 @@ const TaskList = ({ id, time, name, className }) => (
           }
         }
 
-        store.writeQuery({ query: TASKS_QUERY, data });
+        store.writeQuery({ query: GET_TASKS, data });
       }}
     >
       {doneTaskMutation => (

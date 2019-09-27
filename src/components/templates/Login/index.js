@@ -3,7 +3,7 @@ import styles from "../../atoms/Input/styles.module.sass";
 import Button from "../../atoms/Button";
 import { SessionContainer } from "../../../containers/";
 import { Mutation } from "react-apollo";
-import { LOGIN_MUTATION } from "../../../queries";
+import { LOGIN_MUTATION } from "../../../graphqls/mutations";
 
 const LoginTemplate = ({ className }) => {
   const [email, setEmail] = useState("lazy@example.com");

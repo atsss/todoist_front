@@ -10,16 +10,6 @@ export const DONE_TASK_MUTATION = gql`
   }
 `;
 
-export const TASKS_QUERY = gql`
-  {
-    tasks {
-      id
-      name
-      dueDate
-    }
-  }
-`;
-
 export const LOGIN_MUTATION = gql`
   mutation LoginMutation($email: String!, $password: String!) {
     signinUser(email: { email: $email, password: $password }) {
