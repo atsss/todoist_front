@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import TaskEditTemplate from "../templates/TaskEditTemplate";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
@@ -12,21 +12,19 @@ const TASK_QUERY = gql`
   }
 `;
 
-export default class TaskEditPage extends Component {
-  render() {
-    const { params } = this.props.match;
+const TaskEditPage = ({ match }) => {
+  return (
+    <Query query={TASK_QUERY} variables={{ id: match.params.id }}>
+      {({ loading, error, data }) => {
+        if (loading) return <div>Fetching</div>;
+        if (error) return <div>Error</div>;
 
-    return (
-      <Query query={TASK_QUERY} variables={{ id: params.id }}>
-        {({ loading, error, data }) => {
-          if (loading) return <div>Fetching</div>;
-          if (error) return <div>Error</div>;
+        const { task } = data;
 
-          const { task } = data;
+        return <TaskEditTemplate task={task} />;
+      }}
+    </Query>
+  );
+};
 
-          return <TaskEditTemplate task={task} />;
-        }}
-      </Query>
-    );
-  }
-}
+export default TaskEditPage;
