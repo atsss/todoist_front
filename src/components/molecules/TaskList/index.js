@@ -7,8 +7,23 @@ import { useMutation } from "@apollo/react-hooks";
 import { GET_TASKS } from "../../../graphqls/queries";
 import { DONE_TASK_MUTATION } from "../../../graphqls/mutations";
 import { timeFormat } from "../../utils/TimeFormat";
+import { containerPresenter } from "../../utils/HoC.js";
 
-const TaskList = ({ id, time, name, className }) => {
+const TaskListPresenter = ({ id, time, name, doneTask, className }) => (
+  <li className={[styles.root, className].join(" ")}>
+    <div onClick={doneTask}>
+      {" "}
+      <Check />{" "}
+    </div>
+    <Txt weight="bold" className="u-ml15">
+      {timeFormat(time)}
+    </Txt>
+    <Txt className="u-ml5">{name}</Txt>
+    <Settings id={id} className={styles.settings} />
+  </li>
+);
+
+const TaskListContainer = ({ presenter, id, ...props }) => {
   const [doneTask, { _data }] = useMutation(DONE_TASK_MUTATION, {
     update: (store, { data: { doneTask } }) => {
       const data = store.readQuery({ query: GET_TASKS });
@@ -20,19 +35,9 @@ const TaskList = ({ id, time, name, className }) => {
     variables: { id }
   });
 
-  return (
-    <li className={[styles.root, className].join(" ")}>
-      <div onClick={doneTask}>
-        {" "}
-        <Check />{" "}
-      </div>
-      <Txt weight="bold" className="u-ml15">
-        {timeFormat(time)}
-      </Txt>
-      <Txt className="u-ml5">{name}</Txt>
-      <Settings id={id} className={styles.settings} />
-    </li>
-  );
+  return presenter({ id, doneTask, ...props });
 };
+
+const TaskList = containerPresenter(TaskListContainer, TaskListPresenter);
 
 export default TaskList;
