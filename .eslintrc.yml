@@ -3,4 +3,5 @@ extends:
   - plugin:prettier/recommended
 rules:
   prettier/prettier: # - error以下はお好みで
+  argsIgnorePattern: "^_"
   - error
