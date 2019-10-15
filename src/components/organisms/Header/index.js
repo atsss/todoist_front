@@ -8,7 +8,6 @@ const Header = props => (
       <h1>
         <WhiteTxt weight="bold">Todoist</WhiteTxt>
       </h1>
-      <span> ログイン </span>
     </div>
   </header>
 );
