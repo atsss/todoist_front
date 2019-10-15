@@ -5,8 +5,10 @@ import axios from "axios";
 import { AUTH_ENDPOINT } from "../variables/endpoint";
 import { CLIENT, UID, ACCESS_TOKEN } from "../variables/localStrageKey";
 
-function useSession(initialState = false) {
+const useSession = (initialState = false) => {
   const [isLogin, setSession] = useState(initialState);
+  const [isChecked, setCheck] = useState(initialState);
+
   const login = (email, password, setMessage) => {
     return axios
       .post(AUTH_ENDPOINT, { email, password })
@@ -29,8 +31,20 @@ function useSession(initialState = false) {
 
     setSession(false);
   };
+  const checkLogin = () => {
+    if (
+      localStorage.getItem(CLIENT) &&
+      localStorage.getItem(UID) &&
+      localStorage.getItem(ACCESS_TOKEN)
+    ) {
+      setCheck(true);
+      setSession(true);
+    }
 
-  return { isLogin, login, logout };
-}
+    setCheck(true);
+  };
+
+  return { isLogin, login, logout, checkLogin, isChecked };
+};
 
 export const SessionContainer = createContainer(useSession);

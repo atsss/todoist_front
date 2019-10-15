@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import "./App.sass";
 
@@ -20,6 +20,13 @@ library.add(faStroopwafel);
 
 const App = () => {
   const session = SessionContainer.useContainer();
+
+  useEffect(() => session.checkLogin());
+
+  if (!session.isChecked) {
+    return <p>Loading</p>;
+  }
+
   return session.isLogin ? (
     <Fragment>
       <Header />
