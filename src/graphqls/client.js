@@ -1,5 +1,6 @@
 import { ApolloClient } from "apollo-client";
 import { ApolloLink } from "apollo-link";
+import { onError } from "apollo-link-error";
 import { createHttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { CLIENT, UID, ACCESS_TOKEN } from "../variables/localStrageKey";
@@ -20,8 +21,16 @@ const middlewareLink = new ApolloLink((operation, forward) => {
   return forward(operation);
 });
 
+const errorLink = onError(({ networkError }) => {
+  if (networkError.statusCode === 401) {
+    console.log("hi");
+  }
+});
+
+const link = errorLink.concat(middlewareLink.concat(httpLink));
+
 const client = new ApolloClient({
-  link: middlewareLink.concat(httpLink),
+  link,
   cache: new InMemoryCache()
 });
 
