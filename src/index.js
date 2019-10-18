@@ -10,11 +10,11 @@ import client from "./graphqls/client";
 
 ReactDOM.render(
   <BrowserRouter>
-    <SessionContainer.Provider>
-      <ApolloProvider client={client}>
+    <ApolloProvider client={client}>
+      <SessionContainer.Provider>
         <App />
-      </ApolloProvider>
-    </SessionContainer.Provider>
+      </SessionContainer.Provider>
+    </ApolloProvider>
   </BrowserRouter>,
   document.getElementById("root")
 );
