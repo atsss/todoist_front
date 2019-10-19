@@ -21,7 +21,7 @@ library.add(faStroopwafel);
 const App = () => {
   const session = SessionContainer.useContainer();
 
-  useEffect(() => session.checkLogin());
+  useEffect(() => session.checkLogin(), []);
 
   if (!session.isChecked) {
     return <p>Loading</p>;
