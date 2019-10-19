@@ -1,36 +1,44 @@
 import React, { useState } from "react";
 import styles from "../../atoms/Input/styles.module.sass";
 import Button from "../../atoms/Button";
+import Heading from "../../atoms/Heading";
+import { WarningTxt } from "../../atoms/Txt";
+import Input from "../../molecules/inputs/Text";
 import { SessionContainer } from "../../../containers/";
 
 const LoginTemplate = ({ className }) => {
-  const [email, setEmail] = useState("test12@example.com");
-  const [password, setPassword] = useState("12345678");
+  const [email, setEmail] = useState("test01@example.com");
+  const [password, setPassword] = useState("passpass");
   const [message, setMessage] = useState(null);
   const session = SessionContainer.useContainer();
 
   return (
-    <div>
-      <div>
-        {message && <p>{message}</p>}
-        <input
+    <section className="section">
+      <div className="container">
+        <Heading level={1}>ログイン</Heading>
+
+        {message && <WarningTxt className="u-mt10">{message}</WarningTxt>}
+
+        <Input
+          label="メールアドレス"
           value={email}
-          onChange={e => setEmail(e.target.value)}
-          type="text"
-          placeholder="A description for the link"
+          onChange={setEmail}
+          placeholder="test01@export.com"
         />
-        <input
+        <Input
+          label="パスワード"
           value={password}
-          onChange={e => setPassword(e.target.value)}
-          type="text"
-          placeholder="The URL for the link"
+          onChange={setPassword}
+          placeholder="passpass"
+        />
+
+        <Button
+          text="ログイン"
+          onClick={() => session.login(email, password, setMessage)}
+          className="u-mt10"
         />
       </div>
-      <Button
-        text="ログイン"
-        onClick={() => session.login(email, password, setMessage)}
-      />
-    </div>
+    </section>
   );
 };
 
