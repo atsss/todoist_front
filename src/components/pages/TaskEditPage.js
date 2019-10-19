@@ -1,4 +1,5 @@
 import React from "react";
+import Error from "../atoms/Error";
 import TaskEditTemplate from "../templates/TaskEditTemplate";
 import { useQuery } from "@apollo/react-hooks";
 import { GET_TASK } from "../../graphqls/queries";
@@ -9,7 +10,7 @@ const TaskEditPage = ({ match }) => {
   });
 
   if (loading) return <p>Loading ...</p>;
-  if (error) return <div>Error</div>;
+  if (error) return <Error error={error} />;
 
   const { task } = data;
 
