@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import { SessionContainer } from "./containers";
 import Routes from "./config/routes";
 

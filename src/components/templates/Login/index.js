@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styles from "../../atoms/Input/styles.module.sass";
 import Button from "../../atoms/Button";
 import Heading from "../../atoms/Heading";
 import { WarningTxt } from "../../atoms/Txt";

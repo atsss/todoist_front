@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect, useLocation } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { SessionContainer } from "../containers";
 import Layout from "../components/organisms/Layout";
 import LoginPage from "../components/pages/LoginPage";
