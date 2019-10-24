@@ -1,4 +1,6 @@
 import React, { Fragment, useEffect } from "react";
+import { SessionContainer } from "./containers";
+import Routes from "./config/routes";
 
 // utility stayles
 import "./App.sass";
@@ -6,16 +8,6 @@ import "./App.sass";
 // fontawesome
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faStroopwafel } from "@fortawesome/free-solid-svg-icons";
-
-// routing
-import Routes from "./config/routes";
-
-// components
-import Layout, { GridMain, GridSide } from "./components/atoms/Layout";
-import Header from "./components/organisms/Header";
-import Menu from "./components/organisms/Menu";
-import LoginPage from "./components/pages/LoginPage";
-import { SessionContainer } from "./containers";
 
 library.add(faStroopwafel);
 
@@ -28,21 +20,7 @@ const App = () => {
     return <p>Loading</p>;
   }
 
-  return session.isLogin ? (
-    <Fragment>
-      <Header />
-      <Layout>
-        <GridMain>
-          <Routes />
-        </GridMain>
-        <GridSide>
-          <Menu />
-        </GridSide>
-      </Layout>
-    </Fragment>
-  ) : (
-    <LoginPage />
-  );
+  return <Routes />;
 };
 
 export default App;
