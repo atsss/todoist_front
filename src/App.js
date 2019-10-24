@@ -1,19 +1,20 @@
 import React, { Fragment, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+
+// utility stayles
 import "./App.sass";
 
 // fontawesome
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faStroopwafel } from "@fortawesome/free-solid-svg-icons";
 
+// routing
+import Routes from "./config/routes";
+
 // components
 import Layout, { GridMain, GridSide } from "./components/atoms/Layout";
 import Header from "./components/organisms/Header";
 import Menu from "./components/organisms/Menu";
 import LoginPage from "./components/pages/LoginPage";
-import TaskIndexPage from "./components/pages/TaskIndexPage";
-import TaskNewPage from "./components/pages/TaskNewPage";
-import TaskEditPage from "./components/pages/TaskEditPage";
 import { SessionContainer } from "./containers";
 
 library.add(faStroopwafel);
@@ -32,11 +33,7 @@ const App = () => {
       <Header />
       <Layout>
         <GridMain>
-          <Switch>
-            <Route exact path="/" component={TaskIndexPage} />
-            <Route exact path="/tasks/new" component={TaskNewPage} />
-            <Route exact path="/tasks/:id/edit" component={TaskEditPage} />
-          </Switch>
+          <Routes />
         </GridMain>
         <GridSide>
           <Menu />
