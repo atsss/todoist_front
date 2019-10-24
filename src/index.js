@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ApolloProvider } from "react-apollo";
 import * as serviceWorker from "./serviceWorker";
 import { SessionContainer } from "./containers";
-import client from "./graphqls/client";
+import client from "./config/apollo";
 
 ReactDOM.render(
   <BrowserRouter>
