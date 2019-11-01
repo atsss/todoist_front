@@ -12,7 +12,8 @@ const TaskLists = ({ tasks, ...props }) => (
         <TaskList
           key={task.id}
           id={task.id}
-          time={task.dueDate}
+          hour={task.schedule.hour}
+          minute={task.schedule.minute}
           name={task.name}
         />
       ))}

@@ -9,14 +9,14 @@ import { DONE_TASK_MUTATION } from "../../../graphqls/mutations";
 import { timeFormat } from "../../utils/TimeFormat";
 import { containerPresenter } from "../../utils/HoC.js";
 
-const TaskListPresenter = ({ id, time, name, doneTask, className }) => (
+const TaskListPresenter = ({ id, hour, minute, name, doneTask, className }) => (
   <li className={[styles.root, className].join(" ")}>
     <div onClick={doneTask}>
       {" "}
       <Check />{" "}
     </div>
     <Txt weight="bold" className="u-ml15">
-      {timeFormat(time)}
+      {timeFormat({ hour, minute })}
     </Txt>
     <Txt className="u-ml5">{name}</Txt>
     <Settings id={id} className={styles.settings} />
