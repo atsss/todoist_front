@@ -5,7 +5,10 @@ export const GET_TASKS = gql`
     tasks {
       id
       name
-      dueDate
+      schedule {
+        hour
+        minute
+      }
     }
   }
 `;
