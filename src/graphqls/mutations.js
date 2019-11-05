@@ -1,11 +1,14 @@
 import gql from "graphql-tag";
 
-export const DONE_TASK_MUTATION = gql`
-  mutation DoneTaskMutation($id: ID!) {
-    doneTask(id: $id) {
+export const CREATE_RESULT_MUTATION = gql`
+  mutation CreateResultMutation($taskId: ID!, $score: Int!) {
+    createResult(taskId: $taskId, score: $score) {
       id
-      name
-      dueDate
+      score
+      task {
+        id
+        name
+      }
     }
   }
 `;
