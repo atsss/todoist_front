@@ -14,8 +14,6 @@ const ScoreOptions = ({ value, setScore, className }) => {
   );
 };
 
-const options = [0, 3, 6, 8, 10].map(i => {
-  return { value: i, name: i };
-});
+const options = [0, 3, 6, 8, 10].map(i => ({ value: i, name: i }));
 
 export default ScoreOptions;
