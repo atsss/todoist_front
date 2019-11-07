@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styles from "./styles.module.sass";
-import Check from "../../atoms/Check";
 import Txt from "../../atoms/Txt";
 import Badge from "../../atoms/Badge";
+import Button from "../../atoms/Button";
 import ScoreOptions from "../../molecules/ScoreOptions";
 import { useMutation } from "@apollo/react-hooks";
 import { GET_TASKS } from "../../../graphqls/queries";
@@ -40,20 +40,19 @@ const TaskListPresenter = ({
   className
 }) => (
   <li className={[styles.root, className].join(" ")}>
-    <div onClick={createResult}>
-      {" "}
-      <Check />{" "}
+    <div className={styles.block}>
+      <Txt weight="bold">{timeFormat({ hour, minute })}</Txt>
+      <Txt className="u-ml5">{name}</Txt>
+      {tags.map((tag, i) => (
+        <Badge key={i} className="u-ml10">
+          {tag.name}
+        </Badge>
+      ))}
     </div>
-    <Txt weight="bold" className="u-ml15">
-      {timeFormat({ hour, minute })}
-    </Txt>
-    <Txt className="u-ml5">{name}</Txt>
-    {tags.map((tag, i) => (
-      <Badge key={i} className="u-ml10">
-        {tag.name}
-      </Badge>
-    ))}
-    <ScoreOptions value={score} setScore={setScore} />
+    <div className={styles.block}>
+      <ScoreOptions value={score} setScore={setScore} />
+      <Button text="done!" onClick={createResult} className="u-ml10" />
+    </div>
   </li>
 );
 
