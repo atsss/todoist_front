@@ -9,6 +9,9 @@ export const GET_TASKS = gql`
         hour
         minute
       }
+      tags {
+        name
+      }
     }
   }
 `;

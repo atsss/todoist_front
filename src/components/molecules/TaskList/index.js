@@ -2,35 +2,13 @@ import React, { useState } from "react";
 import styles from "./styles.module.sass";
 import Check from "../../atoms/Check";
 import Txt from "../../atoms/Txt";
+import Badge from "../../atoms/Badge";
 import ScoreOptions from "../../molecules/ScoreOptions";
 import { useMutation } from "@apollo/react-hooks";
 import { GET_TASKS } from "../../../graphqls/queries";
 import { CREATE_RESULT_MUTATION } from "../../../graphqls/mutations";
 import { timeFormat } from "../../utils/TimeFormat";
 import { containerPresenter } from "../../utils/HoC.js";
-
-const TaskListPresenter = ({
-  id,
-  hour,
-  minute,
-  name,
-  score,
-  createResult,
-  setScore,
-  className
-}) => (
-  <li className={[styles.root, className].join(" ")}>
-    <div onClick={createResult}>
-      {" "}
-      <Check />{" "}
-    </div>
-    <Txt weight="bold" className="u-ml15">
-      {timeFormat({ hour, minute })}
-    </Txt>
-    <Txt className="u-ml5">{name}</Txt>
-    <ScoreOptions value={score} setScore={setScore} />
-  </li>
-);
 
 const TaskListContainer = ({ presenter, id, ...props }) => {
   const [score, setScore] = useState(8);
@@ -49,6 +27,35 @@ const TaskListContainer = ({ presenter, id, ...props }) => {
 
   return presenter({ id, score, createResult, setScore, ...props });
 };
+
+const TaskListPresenter = ({
+  id,
+  hour,
+  minute,
+  name,
+  tags,
+  score,
+  createResult,
+  setScore,
+  className
+}) => (
+  <li className={[styles.root, className].join(" ")}>
+    <div onClick={createResult}>
+      {" "}
+      <Check />{" "}
+    </div>
+    <Txt weight="bold" className="u-ml15">
+      {timeFormat({ hour, minute })}
+    </Txt>
+    <Txt className="u-ml5">{name}</Txt>
+    {tags.map((tag, i) => (
+      <Badge key={i} className="u-ml10">
+        {tag.name}
+      </Badge>
+    ))}
+    <ScoreOptions value={score} setScore={setScore} />
+  </li>
+);
 
 const TaskList = containerPresenter(TaskListContainer, TaskListPresenter);
 

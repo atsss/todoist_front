@@ -15,6 +15,7 @@ const TaskLists = ({ tasks, ...props }) => (
           hour={task.schedule.hour}
           minute={task.schedule.minute}
           name={task.name}
+          tags={task.tags}
         />
       ))}
     </ul>
