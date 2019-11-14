@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styles from "./styles.module.sass";
 import { WhiteTxt } from "../../atoms/Txt";
 
@@ -10,5 +11,11 @@ const Button = ({ text, onClick, className }) => (
     <WhiteTxt weight="bold">{text}</WhiteTxt>
   </button>
 );
+
+Button.propTypes = {
+  text: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  className: PropTypes.string
+};
 
 export default Button;
