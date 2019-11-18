@@ -18,7 +18,7 @@ describe("logic test", () => {
   });
 
   it("normal", () => {
-    const wrapper = shallow(<HeadingContainer presenter={mockCallBack} />);
+    const wrapper = setupContainer({ presenter: mockCallBack });
 
     expect(mockCallBack).toBeCalled();
 
@@ -28,9 +28,7 @@ describe("logic test", () => {
   });
 
   it("pass only level as prorps", () => {
-    const wrapper = shallow(
-      <HeadingContainer presenter={mockCallBack} level={3} />
-    );
+    const wrapper = setupContainer({ presenter: mockCallBack, level: 3 });
 
     const { tag, visualLevel } = mockCallBack.mock.calls[0][0];
     expect(tag).toBe("h3");
@@ -38,12 +36,17 @@ describe("logic test", () => {
   });
 
   it("pass level and visual level as prorps", () => {
-    const wrapper = shallow(
-      <HeadingContainer presenter={mockCallBack} level={3} visualLevel={4} />
-    );
+    const wrapper = setupContainer({
+      presenter: mockCallBack,
+      level: 3,
+      visualLevel: 4
+    });
 
     const { tag, visualLevel } = mockCallBack.mock.calls[0][0];
     expect(tag).toBe("h3");
     expect(visualLevel).toBe(4);
   });
 });
+
+const setupContainer = ({ presenter, ...props }) =>
+  shallow(<HeadingContainer presenter={presenter} {...props} />);
