@@ -1,7 +1,14 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styles from "./styles.module.sass";
+import { containerPresenter } from "../../utils/HoC.js";
 
-const LayoutPresenter = ({ tag: Tag = "div", parts, className, ...props }) => {
+export const LayoutPresenter = ({
+  tag: Tag = "div",
+  parts,
+  className,
+  ...props
+}) => {
   const { main, side } = parts;
   return (
     <Tag className={[styles.root, className].join(" ")}>
@@ -11,14 +18,26 @@ const LayoutPresenter = ({ tag: Tag = "div", parts, className, ...props }) => {
   );
 };
 
-const LayoutContainer = ({ presenter, children, ...props }) => {
+export const LayoutContainer = ({ presenter, children, ...props }) => {
   const parts = mapParts(children);
   return presenter({ parts, ...props });
 };
 
+const Layout = containerPresenter(LayoutContainer, LayoutPresenter);
+
+export default Layout;
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string
+};
+
 const partTypes = ["GridMain", "GridSide"];
 
-function mapParts(elems) {
+export const GridMain = () => <div>これはレンダリングされないもの</div>;
+export const GridSide = () => <div>これはレンダリングされないもの</div>;
+
+const mapParts = elems => {
   const parts = [];
   elems.map(elem => {
     const idx = partTypes.indexOf(elem.type.name); // displayName => name
@@ -28,16 +47,4 @@ function mapParts(elems) {
   });
   const [main, side] = parts;
   return { main, side };
-}
-
-const Layout = props => (
-  <LayoutContainer
-    presenter={presenterProps => <LayoutPresenter {...presenterProps} />}
-    {...props}
-  />
-);
-
-export default Layout;
-
-export const GridMain = () => <div>これはレンダリングされないもの</div>;
-export const GridSide = () => <div>これはレンダリングされないもの</div>;
+};
