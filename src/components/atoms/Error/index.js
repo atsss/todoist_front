@@ -1,13 +1,20 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { SessionContainer } from "../../../containers";
 
 const Error = ({ error }) => {
-  const session = SessionContainer.useContainer();
-  const { networkError } = error;
+  const logout = SessionContainer.useContainer().logout;
+  const {
+    networkError: { statusCode }
+  } = error;
 
-  if (networkError.statusCode === 401) session.logout();
+  if (statusCode === 401) logout();
 
   return <div>Error</div>;
 };
 
 export default Error;
+
+Error.propTypes = {
+  error: PropTypes.object.isRequired
+};
