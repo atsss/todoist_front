@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { SessionContainer } from "./containers";
-import Routes from "./config/routes";
+import Routes from "./config/Routes";
 
 // utility stayles
 import "./App.sass";
