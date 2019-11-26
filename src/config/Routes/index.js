@@ -20,7 +20,7 @@ const Routes = () => (
 
 export default Routes;
 
-const Auth = ({ children }) => {
+export const Auth = ({ children }) => {
   const session = SessionContainer.useContainer();
 
   return (
