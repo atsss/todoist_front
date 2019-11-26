@@ -8,9 +8,7 @@ let spy;
 
 beforeEach(() => {
   mockCallBack = jest.fn();
-  spy = jest
-    .spyOn(SessionContainer, "useContainer")
-    .mockImplementation(() => ({ logout: mockCallBack }));
+  setupSpy(mockCallBack);
 });
 
 it("renders without crashing", () => {
@@ -35,3 +33,8 @@ describe("logic test", () => {
 
 const setupWrapper = statusCode =>
   shallow(<Error error={{ networkError: { statusCode } }} />);
+
+const setupSpy = mockCallBack =>
+  jest
+    .spyOn(SessionContainer, "useContainer")
+    .mockImplementation(() => ({ logout: mockCallBack }));
