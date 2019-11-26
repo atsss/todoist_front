@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import { SessionContainer } from "../../containers";
-import LoginTemplate from "../templates/Login";
+import { SessionContainer } from "../../../containers";
+import LoginTemplate from "../../templates/LoginTemplate";
 
 const LoginPage = () => {
   const session = SessionContainer.useContainer();

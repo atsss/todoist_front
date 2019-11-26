@@ -1,5 +1,5 @@
 import React from "react";
-import TaskNewTemplate from "../templates/TaskNewTemplate";
+import TaskNewTemplate from "../../templates/TaskNewTemplate";
 
 const TaskNewPage = () => <TaskNewTemplate />;
 

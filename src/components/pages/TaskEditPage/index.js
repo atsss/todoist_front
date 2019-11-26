@@ -1,8 +1,8 @@
 import React from "react";
-import Error from "../atoms/Error";
-import TaskEditTemplate from "../templates/TaskEditTemplate";
+import Error from "../../atoms/Error";
+import TaskEditTemplate from "../../templates/TaskEditTemplate";
 import { useQuery } from "@apollo/react-hooks";
-import { GET_TASK } from "../../graphqls/queries";
+import { GET_TASK } from "../../../graphqls/queries";
 
 const TaskEditPage = ({ match }) => {
   const { loading, error, data } = useQuery(GET_TASK, {
