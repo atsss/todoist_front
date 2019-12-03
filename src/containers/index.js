@@ -9,7 +9,7 @@ const useSession = (initialState = false) => {
   const [isLogin, setSession] = useState(initialState);
   const [isChecked, setCheck] = useState(initialState);
 
-  const login = (email, password, setMessage) => {
+  const login = ({ email, password, setMessage }) => {
     return axios
       .post(AUTH_ENDPOINT, { email, password })
       .then(response => {

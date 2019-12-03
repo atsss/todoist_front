@@ -33,7 +33,7 @@ const LoginTemplate = ({ className }) => {
 
         <Button
           text="ログイン"
-          onClick={() => session.login(email, password, setMessage)}
+          onClick={() => session.login({ email, password, setMessage })}
           className="u-mt10"
         />
       </div>
