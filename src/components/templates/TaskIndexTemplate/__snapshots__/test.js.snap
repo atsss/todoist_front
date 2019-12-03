@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div>
+  <div>
+    <div
+      className="root "
+    >
+      <h2
+        className="h h2 "
+      >
+        今日
+      </h2>
+      <p
+        className="sub s normal u-ml5"
+      >
+        12月3日
+      </p>
+    </div>
+    <ul>
+      <li
+        className="root "
+      >
+        <div
+          className="block"
+        >
+          <p
+            className="default m bold "
+          >
+            10:30
+          </p>
+          <p
+            className="default m normal u-ml5"
+          >
+            hoge
+          </p>
+          <span
+            className="tag is-info is-light u-ml10"
+          >
+            fuga
+          </span>
+        </div>
+        <div
+          className="block"
+        >
+          <div
+            className="field u-mt10 "
+          >
+            <div
+              className="select"
+            >
+              <select
+                onChange={[Function]}
+                value={8}
+              >
+                <option
+                  value={0}
+                >
+                  0
+                </option>
+                <option
+                  value={3}
+                >
+                  3
+                </option>
+                <option
+                  value={6}
+                >
+                  6
+                </option>
+                <option
+                  value={8}
+                >
+                  8
+                </option>
+                <option
+                  value={10}
+                >
+                  10
+                </option>
+              </select>
+            </div>
+          </div>
+          <button
+            className="button u-ml10"
+            onClick={[Function]}
+          >
+            <p
+              className="white m bold "
+            >
+              done!
+            </p>
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
