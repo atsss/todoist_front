@@ -10,7 +10,7 @@ const tasks = [
   {
     id: "1",
     name: "hoge",
-    schedule: { hour: "10", minute: "30" },
+    schedule: { hour: 10, minute: 30 },
     tags: [{ name: "fuga" }]
   }
 ];

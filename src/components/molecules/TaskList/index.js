@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import styles from "./styles.module.sass";
 import Txt from "../../atoms/Txt";
 import Badge from "../../atoms/Badge";
@@ -10,17 +11,19 @@ import { CREATE_RESULT_MUTATION } from "../../../graphqls/mutations";
 import { timeFormat } from "../../utils/TimeFormat";
 import { containerPresenter } from "../../utils/HoC.js";
 
-const TaskListContainer = ({ presenter, id, ...props }) => {
+export const TaskListContainer = ({ presenter, id, ...props }) => {
   const [score, setScore] = useState(8);
 
   const [createResult, { _data }] = useMutation(CREATE_RESULT_MUTATION, {
     update: (store, { data: { createResult } }) => {
       const doneTask = createResult.task;
       const data = store.readQuery({ query: GET_TASKS });
+      const newTasks = filterTasks(data.tasks, doneTask);
 
-      const newTasks = data.tasks.filter(task => task.id !== doneTask.id);
-
-      store.writeQuery({ query: GET_TASKS, data: { tasks: newTasks } });
+      store.writeQuery({
+        query: GET_TASKS,
+        data: { tasks: newTasks }
+      });
     },
     variables: { taskId: id, score }
   });
@@ -28,7 +31,7 @@ const TaskListContainer = ({ presenter, id, ...props }) => {
   return presenter({ id, score, createResult, setScore, ...props });
 };
 
-const TaskListPresenter = ({
+export const TaskListPresenter = ({
   id,
   hour,
   minute,
@@ -59,3 +62,15 @@ const TaskListPresenter = ({
 const TaskList = containerPresenter(TaskListContainer, TaskListPresenter);
 
 export default TaskList;
+
+export const filterTasks = (tasks, doneTask) =>
+  tasks.filter(task => task.id !== doneTask.id);
+
+TaskList.propTypes = {
+  id: PropTypes.string.isRequired,
+  hour: PropTypes.number.isRequired,
+  minute: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  tags: PropTypes.array.isRequired,
+  className: PropTypes.string
+};
